@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState,lazy, Suspense } from 'react'
 import './Menu.css'
-import {HashRouter,Route,Routes,Navigate  } from 'react-router-dom'
-import Home from '../Home'
-import About from '../About'
-import Contact from '../Contact'
+import {HashRouter,Route,Routes,Navigate,useLocation  } from 'react-router-dom'
+
+//import Home from '../Home'
+//import About from '../About'
+//import Contact from '../Contact'
+
+const Home=lazy(()=>import('../Home'))
+const About=lazy(()=>import('../About'))
+const Contact=lazy(()=>import('../Contact'))
+
 
 const Menu = () => {
-  const [menuItem,setMenuItem]=useState('home')
+  const location=useLocation()
+  const [menuItem,setMenuItem]=useState(location.pathname.slice(1))
   const fnMenuClick=(eve)=>{
      eve.stopPropagation()
      const {id,nodeName}=eve.target
@@ -22,14 +29,14 @@ const Menu = () => {
           <a className={menuItem=='about' && "menuActive"} id='about' href='#/about'>About</a>
           <a className={menuItem=='contact' && "menuActive"}id='contact' href='#/contact'>Contact</a>
        </div>
-       <HashRouter>
-            <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<Navigate to='/home' />}  />
-            </Routes>
-       </HashRouter>
+       <Suspense fallback="Loading...">
+               <Routes>
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="*" element={<Navigate to='/home' />}  />
+               </Routes>
+       </Suspense>
     </div>
   )
 }
