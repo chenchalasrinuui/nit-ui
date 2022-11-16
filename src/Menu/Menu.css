@@ -1,17 +1,50 @@
 .menu{
-    background: #d0d7da;
-    line-height: 40px;
+  background: #d0d7da;
+  line-height: 40px;
+}
+.mobile-menu{
+  min-height: 180px;
+  text-align: left !important;
+  width: 150px;
+  display: inline-block;
+  position: absolute;
+  z-index: 999;
+  padding: 5px;
+  background: #d0d7da;
+  line-height: 40px;
+  transition: left 1s;
+}
+
+.mobile-menu > a{
+  display: block;
+  margin-right: 15px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 18px;
+  color: white;
 }
 
 .menu > a{
-    margin-right: 15px;
-    letter-spacing: 5px;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 18px;
-    color: white;
+  margin-right: 15px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 18px;
+  color: white;
 }
-  .menuActive{
-    color: red !important;
-    font-size: 20px !important
-  }
+.menuActive{
+  color: red !important;
+  font-size: 20px !important
+}
+
+.mobile-menu-btn{
+  position: absolute;
+  right: 0;
+}
+
+.mobile-menu-btn > img{
+  width:30px;
+  height:30px
+}
+

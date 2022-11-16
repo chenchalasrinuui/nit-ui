@@ -1,0 +1,15 @@
+<p>
+    Search: <input onkeyup="fnGetProducts(event)" />
+</p>
+
+<script>
+    var timeoutId;
+    function fnGetProducts(eve){
+        clearTimeout(timeoutId)
+        timeoutId=setTimeout(function(){
+           var productName=eve.target.value;
+           console.log('sending requiest to the the ' + productName)
+        },5000)
+    }
+</script>
+
